@@ -15,4 +15,5 @@ langchain-huggingface
 wikipedia
 arxiv
 ddgs
+sentence-transformers
 
