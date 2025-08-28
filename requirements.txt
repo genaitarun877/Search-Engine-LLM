@@ -13,3 +13,4 @@ pypdf
 beautifulsoup4
 langchain-huggingface
 wikipedia
+arxiv
