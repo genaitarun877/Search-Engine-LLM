@@ -1,41 +1,13 @@
-# Core Python & Jupyter
-ipykernel==6.29.5
-python-dotenv==1.0.1
-pydantic==2.9.2
-
-# Data & Visualization
-numpy==1.26.4
-pandas==2.2.3
-matplotlib==3.9.2
-seaborn==0.13.2
-
-# Web Frameworks
-flask==3.0.3
-fastapi==0.115.0
-uvicorn==0.30.6
-streamlit==1.38.0
-
-# NLP & AI
-spacy==3.8.2
-nltk==3.9.1
-transformers==4.44.2
-huggingface-hub==0.24.6
-
-# LangChain Ecosystem
-langchain==0.3.1
-langchain-core==0.3.6
-langchain-community==0.3.1
-langchain-text-splitters==0.3.0
-langchain-openai==0.2.1
-langchain-groq==0.1.4
-langchain-chroma==0.1.4
-
-# Vector DBs
-chromadb==0.5.3
-faiss-cpu==1.8.0.post1
-
-# Utilities
-pypdf==4.3.1
-beautifulsoup4==4.12.3
-bs4==0.0.2
-langserve==0.3.0
+streamlit
+langchain
+langchain-core
+langchain-community
+langchain-openai
+langchain-groq
+langchain-chroma
+chromadb
+faiss-cpu
+transformers
+huggingface-hub
+pypdf
+beautifulsoup4
