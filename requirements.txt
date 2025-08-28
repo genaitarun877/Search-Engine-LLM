@@ -11,3 +11,4 @@ transformers
 huggingface-hub
 pypdf
 beautifulsoup4
+langchain-huggingface
