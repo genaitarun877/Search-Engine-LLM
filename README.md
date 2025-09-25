@@ -9,7 +9,7 @@
 
 **An intelligent chatbot that can search the web, query academic papers, and chat with your PDF documents!**
 
-[![Demo](https://img.shields.io/badge/🚀-Live_Demo-red?style=for-the-badge)](https://your-demo-link.com)
+[![Demo](https://img.shields.io/badge/🚀-Live_Demo-red?style=for-the-badge)](https://search-engine-llm-fht3jfeavvcdtjhtfhccpg.streamlit.app/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 </div>
@@ -25,7 +25,7 @@
 - 📖 **PDF Chat** - Upload and chat with your PDF documents using RAG
 
 ### 🤖 **AI-Powered Intelligence**
-- 🧠 **Groq LLM** - Lightning-fast responses using Llama3-70B model
+- 🧠 **Groq LLM** - Lightning-fast responses using Llama-3.1-8B-Instant model
 - 🔄 **ReAct Agent** - Intelligent reasoning and action planning
 - 💬 **Streamlit UI** - Beautiful, interactive web interface
 - 🔍 **Vector Search** - FAISS-powered semantic search for PDFs
@@ -49,8 +49,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/search-engine.git
-   cd search-engine
+   git clone https://github.com/genaitarun877/Search-Engine-LLM.git
+   cd Search-Engine-LLM
    ```
 
 2. **Install dependencies**
@@ -121,7 +121,7 @@ graph TD
 
 | Component | Technology | Purpose |
 |-----------|------------|---------|
-| 🤖 **LLM** | Groq + Llama3-70B | Core AI reasoning |
+| 🤖 **LLM** | Groq + Llama-3.1-8B-Instant | Core AI reasoning |
 | 🔗 **Framework** | LangChain | Agent orchestration |
 | 🌐 **Web Interface** | Streamlit | User interface |
 | 🔍 **Search** | DuckDuckGo, Wikipedia, ArXiv | Information sources |
@@ -133,7 +133,7 @@ graph TD
 ## 📁 Project Structure
 
 ```
-📦 search-engine/
+📦 Search-Engine-LLM/
 ├── 📄 app.py                 # Main Streamlit application
 ├── 📋 requirements.txt       # Python dependencies
 ├── 📓 tools_agents.ipynb     # Development notebook
@@ -200,9 +200,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 🐛 **Issues**: [GitHub Issues](https://github.com/yourusername/search-engine/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/yourusername/search-engine/discussions)
-- 📧 **Email**: your.email@example.com
+- 🐛 **Issues**: [GitHub Issues](https://github.com/genaitarun877/Search-Engine-LLM/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/genaitarun877/Search-Engine-LLM/discussions)
+- 📧 **Email**: genai_tarun877@gmail.com
 
 ---
 
@@ -210,6 +210,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **⭐ Star this repository if you found it helpful!**
 
-Made with ❤️ by [Your Name](https://github.com/yourusername)
+Made with ❤️ by [Tarun](https://github.com/genaitarun877)
 
 </div>
