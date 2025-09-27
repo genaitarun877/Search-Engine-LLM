@@ -1,29 +1,38 @@
-ipykernel
-numpy
-pandas
-matplotlib
-seaborn
-flask
-streamlit
-spacy
-nltk
-langchain
-python-dotenv
-langchain-community
-pypdf
-beautifulsoup4
-langchain-text-splitters
-langchain-openai
-chromadb
-faiss-cpu
-langchain-groq
-langchain-core
-fastapi
-uvicorn
-langserve
-pydantic
-transformers
-langchain-chroma
-bs4
-huggingface
-huggingface-hub
+# Core Streamlit and LangChain dependencies
+streamlit>=1.28.0
+langchain>=0.1.0
+langchain-community>=0.0.20
+langchain-core>=0.1.0
+langchain-groq>=0.0.1
+langchain-huggingface>=0.0.1
+langchain-text-splitters>=0.0.1
+
+# AI/ML dependencies
+groq>=0.4.1
+transformers>=4.30.0
+torch>=2.0.0
+sentence-transformers>=2.2.0
+
+# Vector store and embeddings
+faiss-cpu>=1.7.4
+chromadb>=0.4.0
+
+# PDF processing
+pypdf>=3.0.0
+
+# Search tools
+duckduckgo-search>=3.9.0
+wikipedia>=1.4.0
+arxiv>=2.0.0
+
+# Environment and utilities
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+
+# Web scraping and parsing
+beautifulsoup4>=4.12.0
+requests>=2.31.0
+
+# Optional: For better performance
+numpy>=1.24.0
+pandas>=2.0.0
