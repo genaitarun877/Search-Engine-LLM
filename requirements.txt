@@ -22,6 +22,7 @@ pypdf>=3.0.0
 
 # Search tools
 duckduckgo-search>=3.9.0
+ddgs>=0.0.1
 wikipedia>=1.4.0
 arxiv>=2.0.0
 
