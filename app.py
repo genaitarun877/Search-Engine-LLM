@@ -79,34 +79,70 @@ if prompt:=st.chat_input(placeholder="What is machine learning?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
-    llm=ChatGroq(groq_api_key=api_key,model_name="llama-3.1-8b-instant",streaming=True)
-    
-    # Start with the base tools
-    tools=[wiki, arxiv, search]
+    # Check if API key is provided
+    if not api_key:
+        with st.chat_message("assistant"):
+            st.error("🔑 **API Key Required**")
+            st.info("Please enter your Groq API key in the sidebar to start chatting!")
+            st.markdown("""
+            **How to get your Groq API key:**
+            1. Visit [console.groq.com](https://console.groq.com)
+            2. Sign up for a free account
+            3. Generate your API key
+            4. Paste it in the sidebar above
+            """)
+            st.session_state.messages.append({
+                "role": "assistant", 
+                "content": "Please enter your Groq API key in the sidebar to start chatting!"
+            })
+    else:
+        try:
+            llm=ChatGroq(groq_api_key=api_key,model_name="llama-3.1-8b-instant",streaming=True)
+            
+            # Start with the base tools
+            tools=[wiki, arxiv, search]
 
-    # New: If the PDF retriever exists in the session, create and add the PDF tool
-    if "pdf_retriever" in st.session_state:
-        pdf_retriever_tool = create_retriever_tool(
-            st.session_state.pdf_retriever,
-            "pdf_document_search",
-            "Searches and returns information from the uploaded PDF document. You MUST use this tool first to answer questions before trying other tools."
-        )
-        tools.insert(0, pdf_retriever_tool) # Insert at the beginning to signal priority
+            # New: If the PDF retriever exists in the session, create and add the PDF tool
+            if "pdf_retriever" in st.session_state:
+                pdf_retriever_tool = create_retriever_tool(
+                    st.session_state.pdf_retriever,
+                    "pdf_document_search",
+                    "Searches and returns information from the uploaded PDF document. You MUST use this tool first to answer questions before trying other tools."
+                )
+                tools.insert(0, pdf_retriever_tool) # Insert at the beginning to signal priority
 
-    # Get the prompt to use - you can modify this!
-    prompt_template = hub.pull("hwchase17/react")
+            # Get the prompt to use - you can modify this!
+            prompt_template = hub.pull("hwchase17/react")
 
-    agent = create_react_agent(llm, tools, prompt_template)
-    search_agent = AgentExecutor(
-        agent=agent,
-        tools=tools,
-        verbose=True,
-        handle_parsing_errors=True,
-    )
+            agent = create_react_agent(llm, tools, prompt_template)
+            search_agent = AgentExecutor(
+                agent=agent,
+                tools=tools,
+                verbose=True,
+                handle_parsing_errors=True,
+            )
 
-    with st.chat_message("assistant"):
-        st_cb=StreamlitCallbackHandler(st.container(),expand_new_thoughts=False)
-        response = search_agent.invoke({"input": prompt}, {"callbacks": [st_cb]})
-        response_content = response["output"]
-        st.session_state.messages.append({"role": "assistant", "content": response_content})
-        st.write(response_content)
+            with st.chat_message("assistant"):
+                st_cb=StreamlitCallbackHandler(st.container(),expand_new_thoughts=False)
+                response = search_agent.invoke({"input": prompt}, {"callbacks": [st_cb]})
+                response_content = response["output"]
+                st.session_state.messages.append({"role": "assistant", "content": response_content})
+                st.write(response_content)
+                
+        except Exception as e:
+            with st.chat_message("assistant"):
+                st.error("🚨 **Oops! Something went wrong**")
+                st.warning("There was an error processing your request. Please try again!")
+                
+                # Show helpful error message based on the error type
+                if "api_key" in str(e).lower() or "groq" in str(e).lower():
+                    st.info("💡 **Tip:** Make sure your Groq API key is valid and has sufficient credits.")
+                elif "rate" in str(e).lower() or "limit" in str(e).lower():
+                    st.info("⏰ **Rate Limit:** Please wait a moment before trying again.")
+                else:
+                    st.info("🔄 **Solution:** Try refreshing the page or check your internet connection.")
+                
+                st.session_state.messages.append({
+                    "role": "assistant", 
+                    "content": "Sorry, I encountered an error. Please try again!"
+                })
